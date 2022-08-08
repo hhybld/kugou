@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>song</title>
+    <link rel="shortcut icon" href="./img/下载.ico">
+    <link rel="stylesheet" href="../kufou/css/song.css">
+</head>
+
+<body>
+    <header>
+        <header class="header1">
+            <header class="header1-1">
+                <header class="header1-1-1">
+                    <a href="index.html"><img src="img/kugou_logo.png" alt=""></a>
+                </header>
+                <header class="header1-1-2">
+                    <input type="text" placeholder="金池 谁不是">
+                    <a href="index.html"><img src="img/search.png" alt=""></a>
+                </header>
+            </header>
+            <header class="header1-2">
+                <a href="" class="header1-2-a">音乐人</a>
+                <a href="" class="header1-2-a">主播电台</a>
+                <a href="" class="header1-2-a">开放平台</a>
+                <a href="" class="header1-2-a">VIP会员</a>
+                <p class="header1-2-b"></p>
+                <a class="header1-2-c" href="login.html">登录</a>
+            </header>
+        </header>
+    </header>
+    <nav>
+        <nav class="nav1">
+            <ul id="ul">
+                <li>
+                    <a href="index.html" class="nav1a ">首页</a>
+                </li>
+                <li>
+                    <a href="list.html" class="nav1a ">榜单</a>
+                </li>
+                <li>
+                    <a href="index.html" class="nav1a">听书</a>
+                </li>
+                <li>
+                    <a href="index.html" class="nav1a">直播</a>
+                </li>
+                <li>
+                    <a href="index.html" class="nav1a">商城</a>
+                </li>
+                <li>
+                    <a href="index.html" class="nav1a">下载酷狗</a>
+                </li>
+                <li>
+                    <a href="index.html" class="nav1more">
+                        更多
+                        <span></span>
+
+                    </a>
+                    <ul class="more">
+                        <li>电台</li>
+                        <li>电台</li>
+                        <li>电台</li>
+                        <li>电台</li>
+                        <li>电台</li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </nav>
+    <section>
+        <div class="box">
+            <div class="left">
+                <div class="albumImg">
+                    <img src="../kufou/img/T002R300x300M000003DFRzD192KKD_1.webp" alt="">
+                </div>
+                <div class="dw_this"></div>
+                <div class="playout">外部播放这首歌</div>
+            </div>
+            <div class="right">
+                <div class="right_head">
+                    <h3>七里香</h3><span></span>
+                </div>
+                <div class="right_with">
+                    <p>
+                        <span>专辑：</span>
+                        <span>七里香</span>
+                    </p>
+                    <p>
+                        <span>歌手：</span>
+                        <span>周杰伦</span>
+                    </p>
+                </div>
+                <div class="bg"></div>
+            </div>
+
+        </div>
+
+    </section>
+
+    </div>
+    <center> <audio src="../kufou/audio.mp3" controls></audio></center>
+    <script src="../kufou/jquery-2.1.4/jquery.js"></script>
+    <script src="../kufou/jquery-2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            function parseLyric(text) {
+                //按行分割歌词
+                let lyricArr = text.split('\n');
+                //console.log(lyricArr)//0: "[ti:七里香]" "[ar:周杰伦]"...
+                let result = []; //新建一个数组存放最后结果
+                //遍历分割后的歌词数组，将格式化后的时间节点，歌词填充到result数组
+                for (i = 0; i < lyricArr.length; i++) {
+                    let playTimeArr = lyricArr[i].match(/\[\d{2}:\d{2}((\.|\:)\d{2})\]/g); //正则匹配播放时间
+                    let lineLyric = "";
+                    if (lyricArr[i].split(playTimeArr).length > 0) {
+                        lineLyric = lyricArr[i].split(playTimeArr);
+                    }
+
+                    if (playTimeArr != null) {
+                        for (let j = 0; j < playTimeArr.length; j++) {
+                            let time = playTimeArr[j].substring(1, playTimeArr[j].indexOf("]")).split(":");
+                            //数组填充
+                            result.push({
+                                time: (parseInt(time[0]) * 60 + parseFloat(time[1])).toFixed(4),
+                                content: String(lineLyric).substr(1)
+                            });
+                        }
+                    }
+
+
+                }
+                return result;
+            }
+
+
+            let text = "[ti:七里香]\n[ar:周杰伦]\n[al:七里香]\n[by:]\n[offset:0]\n[00:00.00]七里香 - 周杰伦 (Jay Chou)\n[00:06.96]词：方文山\n[00:13.93]曲：周杰伦\n[00:20.90]编曲：钟兴民\n[00:27.87]窗外的麻雀在电线杆上多嘴\n[00:34.52]你说这一句很有夏天的感觉\n[00:41.23]手中的铅笔在纸上来来回回\n[00:47.58]我用几行字形容你是我的谁\n[00:53.33]\n[00:54.31]秋刀鱼的滋味猫跟你都想了解\n[01:01.65]初恋的香味就这样被我们寻回\n[01:07.74]那温暖的阳光像刚摘的鲜艳草莓\n[01:14.21]你说你舍不得吃掉这一种感觉\n[01:20.91]雨下整夜我的爱溢出就像雨水\n[01:27.67]院子落叶跟我的思念厚厚一叠\n[01:34.41]几句是非也无法将我的热情冷却\n[01:41.41]\n[01:41.95]你出现在我诗的每一页\n[01:48.11]雨下整夜我的爱溢出就像雨水\n[01:54.64]窗台蝴蝶像诗里纷飞的美丽章节\n[02:01.42]我接着写\n[02:03.91]把永远爱你写进诗的结尾\n[02:08.98]你是我唯一想要的了解\n[02:14.80]\n[02:42.26]雨下整夜我的爱溢出就像雨水\n[02:48.68]院子落叶跟我的思念厚厚一叠\n[02:55.43]几句是非也无法将我的热情冷却\n[03:03.03]你出现在我诗的每一页\n[03:08.79]\n[03:09.46]那饱满的稻穗幸福了这个季节\n[03:16.77]而你的脸颊像田里熟透的蕃茄\n[03:22.82]你突然对我说七里香的名字很美\n[03:29.27]我此刻却只想亲吻你倔强的嘴\n[03:35.97]雨下整夜我的爱溢出就像雨水\n[03:42.72]院子落叶跟我的思念厚厚一叠\n[03:49.43]几句是非也无法将我的热情冷却\n[03:56.90]你出现在我诗的每一页\n[04:02.76]\n[04:03.50]整夜我的爱溢出就像雨水\n[04:09.58]窗台蝴蝶像诗里纷飞的美丽章节\n[04:16.66]我接着写\n[04:18.42]\n[04:18.93]把永远爱你写进诗的结尾\n[04:24.01]你是我唯一想要的了解";
+
+            let audio = document.querySelector('audio');
+
+            let result = parseLyric(text); //执行lyc解析
+
+
+            // 把生成的数据显示到界面上去
+            let $ul = $("<ul></ul>");
+            for (let i = 0; i < result.length; i++) {
+                let $li = $("<li></li>").text(result[i].content);
+                $ul.append($li);
+            }
+            $(".bg").append($ul);
+
+            let lineNo = 0; // 当前行歌词
+            let preLine = 6; // 当播放6行后开始滚动歌词
+            let lineHeight = -30; // 每次滚动的距离
+
+            // 滚动播放 歌词高亮  增加类名active
+            function highLight() {
+                let $li = $(".bg li");
+                $li.eq(lineNo).addClass("active").siblings().removeClass("active");
+                if (lineNo > preLine) {
+                    $ul.stop(true, true).animate({ top: (lineNo - preLine) * lineHeight });
+                }
+            }
+
+            highLight();
+
+            // 播放的时候不断渲染
+            audio.addEventListener("timeupdate", function () {
+                if (lineNo == result.length) return;
+                if ($(".bg li").eq(0).hasClass("active")) {
+                    $(".bg ul").css("top", "0");
+                }
+                lineNo = getLineNo(audio.currentTime);
+                highLight();
+                lineNo++;
+            });
+
+            // 当快进或者倒退的时候，找到最近的后面那个result[i].time
+            function getLineNo(currentTime) {
+                if (currentTime >= parseFloat(result[lineNo].time)) {
+                    // 快进
+                    for (let i = result.length - 1; i >= lineNo; i--) {
+                        if (currentTime >= parseFloat(result[i].time)) {
+                            return i;
+                        }
+                    }
+                } else {
+                    // 后退
+                    for (let i = 0; i <= lineNo; i++) {
+                        if (currentTime <= parseFloat(result[i].time)) {
+                            return i - 1;
+                        }
+                    }
+                }
+            }
+
+            //播放结束自动回到开头
+            audio.addEventListener("ended", function () {
+                lineNo = 0;
+                highLight();
+                audio.play();
+                $(".bg ul").css("top", "0");
+            });
+        });
+    </script>
+</body>
+
+</html>
